@@ -128,6 +128,7 @@ bootstrapQ.modalstr = function(opt){
 bootstrapQ.alert = function(options, func){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions);
+	
 	opt.title = '提示';
 	if(typeof options == 'string'){
 		opt.msg = options;
@@ -157,13 +158,14 @@ bootstrapQ.alert = function(options, func){
 bootstrapQ.confirm = function(options, ok, cancel){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions);
+
+	opt.title = '确认操作';
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
 	opt.btn = true;
-	opt.title = '确认操作';
 	
 	// append
 	$('body').append(bootstrapQ.modalstr(opt));
