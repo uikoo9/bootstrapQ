@@ -128,12 +128,12 @@ bootstrapQ.modalstr = function(opt){
 bootstrapQ.alert = function(options, func){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions);
+	opt.title = '提示';
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
 		$.extend(opt, options);
 	}
-	opt.title = '提示';
 	
 	// add
 	$('body').append(bootstrapQ.modalstr(opt));
