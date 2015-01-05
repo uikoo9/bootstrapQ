@@ -20,9 +20,9 @@ BootstrapQ是对Bootstrap3.0的封装，所以依赖以下js：
 
 引入
 ---
-可以下载到本地然后引入，或者直接引入七牛云上的版本，推荐后者：
+下载后引入未压缩版本或已压缩版本：
 
-	<script type="text/javascript" src="http://uikoo9.qiniudn.com/@/js/bootstrapQ/bootstrapQ.min.js"></script>
+	<script type="text/javascript" src="${base}/bootstrapq/bootstrapQ.min.js"></script>
 
 使用
 ---

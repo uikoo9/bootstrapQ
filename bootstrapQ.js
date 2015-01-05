@@ -194,6 +194,7 @@ bootstrapQ.dialog = function(options, func){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions, options);
 	opt.big = true;
+	
 	// append
 	$('body').append(bootstrapQ.modalstr(opt));
 	
