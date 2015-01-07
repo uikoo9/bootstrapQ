@@ -1,5 +1,5 @@
 /**
- * jquery的一些常用方法
+ * jquery\u7684\u4e00\u4e9b\u5e38\u7528\u65b9\u6cd5
  * 1.qser
  * 2.qdata
  */
@@ -33,7 +33,7 @@ $.fn.qdata = function(){
 };
 
 /**
- * 封装一些常用方法
+ * \u5c01\u88c5\u4e00\u4e9b\u5e38\u7528\u65b9\u6cd5
  * 1.ajax
  * 2.on
  */
@@ -71,7 +71,7 @@ qiao.on = function(obj, event, func){
 };
 
 /**
- * 对bootstrap的封装
+ * \u5bf9bootstrap\u7684\u5c01\u88c5
  * 1.alert
  * 2.confirm
  * 3.dialog
@@ -90,8 +90,8 @@ bootstrapQ.modaloptions = {
 	close	: true,
 	title	: 'title',
 	btn		: false,
-	okbtn	: '确定',
-	qubtn	: '取消',
+	okbtn	: '\u786e\u5b9a',
+	qubtn	: '\u53d6\u6d88',
 	msg		: 'msg',
 	big		: false,
 	show	: false,
@@ -127,7 +127,7 @@ bootstrapQ.alert = function(options, func){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions);
 	
-	opt.title = '提示';
+	opt.title = '\u63d0\u793a';
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
@@ -157,7 +157,7 @@ bootstrapQ.confirm = function(options, ok, cancel){
 	// options
 	var opt = $.extend({}, bootstrapQ.modaloptions);
 
-	opt.title = '确认操作';
+	opt.title = '\u786e\u8ba4\u64cd\u4f5c';
 	if(typeof options == 'string'){
 		opt.msg = options;
 	}else{
@@ -279,9 +279,9 @@ $.fn.bspop = function(options){
 bootstrapQ.bstrooptions = {
 	width 	: '500px',
 	html 	: 'true',
-	nbtext	: '下一步',
+	nbtext	: '\u4e0b\u4e00\u6b65',
 	place 	: 'bottom',
-	title 	: '网站使用引导',
+	title 	: '\u7f51\u7ad9\u4f7f\u7528\u5f15\u5bfc',
 	content : 'content'
 };
 bootstrapQ.bstroinit = function(selector, options, step){
@@ -310,8 +310,8 @@ bootstrapQ.bstroinit = function(selector, options, step){
 	}
 };
 bootstrapQ.bstroopts = {
-	prevButtonText : '上一步',
-	finishButton : '<button class="btn btn-lg btn-success bootstro-finish-btn"><i class="icon-ok"></i>完成</button>',
+	prevButtonText : '\u4e0a\u4e00\u6b65',
+	finishButton : '<button class="btn btn-lg btn-success bootstro-finish-btn"><i class="icon-ok"></i>\u5b8c\u6210</button>',
 	stopOnBackdropClick : false,
 	stopOnEsc : false
 };
