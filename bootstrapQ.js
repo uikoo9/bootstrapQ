@@ -60,11 +60,9 @@ qiao.ajax = function(options){
 	if(!options){
 		alert('need options');
 	}else{
-		var opt = qiao.ajaxopt(options);
-		opt.url = base + opt.url;
-		
 		var res;
-		$.ajax(opt).done(function(obj){res = obj;});
+		$.ajax(qiao.ajaxopt(options)).done(function(obj){res = obj;});
+		
 		return res;
 	}
 };
