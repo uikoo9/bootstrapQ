@@ -1,42 +1,39 @@
 [bootstrapQ](http://uikoo9.com/bootstrapQ)
 ==========================================
-1. [Bootstrap](https://github.com/twbs/bootstrap)常用插件封装
-2. [Bootstro](https://github.com/clu3/bootstro.js)网站引导插件封装
-3. 压缩后仅5.5k
-
-开始
-====
+1. bootstrap组件封装
+2. bootstrap组件增强
+3. bootstrap周边组件
+4. 压缩后仅5.5k
 
 依赖
 ---
-BootstrapQ是对Bootstrap3.0的封装，所以依赖以下js：
+依赖bootstrap3.0，浏览器支持等参考bootstrap3.0的支持。
 
-	<!-- jquery-1.11.1 -->
-	<script type="text/javascript" src="http://cdn.staticfile.org/jquery/1.11.1/jquery.min.js"></script>
- 	
-	<!-- bootstrap3.0 js and css -->
-	<link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
-	<script type="text/javascript" src="http://cdn.staticfile.org/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-引入
+相关
 ---
-下载后引入未压缩版本或已压缩版本：
+1. 官网：[http://uikoo9.com/bootstrapQ](http://uikoo9.com/bootstrapQ)
+2. 开始：[http://uikoo9.com/bootstrapQ/started](http://uikoo9.com/bootstrapQ/started)
+3. 文档：[http://uikoo9.com/bootstrapQ/docs/alert](http://uikoo9.com/bootstrapQ/docs/alert)
 
-	<script type="text/javascript" src="${base}/bootstrapq/bootstrapQ.min.js"></script>
-
-使用
+介绍
 ---
-现在就可以开始使用了，例如：
 
-	// 消息提示
-	BootstrapQ.msg({msg:'请填写评论昵称！',type:'danger'});
+###组件封装和增强###
+1. alert
+2. confirm
+3. dialog
+4. msg
+5. tooltip
+6. popover
+7. tree
 
-自定义
----
-可以自己将BootstrapQ.js中的“BootstrapQ”批量替换为自己想使用的变量，例如替换为“qiao”，
-然后这样使用：
+###周边组件###
+1. bstro
+	1. 网站引导插件
+	2. 官网：[http://clu3.github.io/bootstro.js/](http://clu3.github.io/bootstro.js/)
 
-	// 消息提示
-	qiao.msg({msg:'请填写评论昵称！',type:'danger'});
+
+
+
 
 
