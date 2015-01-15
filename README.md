@@ -3,7 +3,7 @@
 1. bootstrap组件封装
 2. bootstrap组件增强
 3. bootstrap周边组件
-4. 压缩后仅5.5k
+4. 压缩后仅8.3k
 
 依赖
 ---

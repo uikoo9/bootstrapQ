@@ -79,9 +79,7 @@ qiao.on = function(obj, event, func){
  * 5.tooltip
  * 6.popover
  * 7.bstree
- * 8.scrollspy
- * 9.initimg
- * 10.bstro
+ * 8.bstro
  */
 bootstrapQ 	= {};
 bootstrapQ.modaloptions = {
@@ -276,6 +274,160 @@ $.fn.bspop = function(options){
 	
 	$(this).popover(opt);
 };
+bootstrapQ.tree = {};
+bootstrapQ.tree.options = {
+	url 	: '/ucenter/menu',
+	height 	: '600px',
+	open	: true,
+	edit	: false,
+	checkbox: false,
+	showurl	: true
+};
+$.fn.bstree = function(options){
+	var opt = $.extend({}, bootstrapQ.tree.options);
+	if(options){
+		if(typeof options == 'string'){
+			opt.url = options;
+		}else{
+			$.extend(opt, options);
+		}
+	}
+	
+	var res = '\u52a0\u8f7d\u5931\u8d25\uff01';
+	var json = qiao.ajax(opt.url + '/tree');
+	if(json && json.object){
+		var tree = json.object;
+		
+		var start = '<div class="panel panel-info"><div class="panel-body" ';
+		if(opt.height != 'auto') 
+			start += 'style="height:600px;overflow-y:auto;"';
+			start += '><ul class="nav nav-list sidenav" id="treeul" data="url:' + opt.url +';">';
+		var children = bootstrapQ.tree.sub(tree, opt);
+		var end = '</ul></div></div>';
+		res = start + children + end;
+	}
+	
+	$(this).empty().append(res);
+	bootstrapQ.tree.init();
+};
+bootstrapQ.tree.sub = function(tree, opt){
+	var res = '';
+	if(tree){
+		var res = 
+			'<li>' + 
+				'<a href="javascript:void(0);" data="id:' + tree.id + ';url:' + tree.url + ';">' + 
+					'<span class="glyphicon glyphicon-minus"></span>';
+		if(opt.checkbox){
+			res += '<input type="checkbox" class="treecheckbox" ';
+			if(tree.checked){
+				res += 'checked';
+			}
+			res += '/>';
+		}
+			res += tree.text;
+		if(opt.showurl){
+			res += '(' + tree.url + ')';
+		}
+		if(opt.edit)
+			res += 
+				'&nbsp;&nbsp;<span class="label label-primary bstreeadd">\u6dfb\u52a0\u5b50\u83dc\u5355</span>' + 
+				'&nbsp;&nbsp;<span class="label label-primary bstreeedit">\u4fee\u6539</span>' + 
+				'&nbsp;&nbsp;<span class="label label-danger  bstreedel">\u5220\u9664</span>';
+			res += '</a>';
+		var children = tree.children;
+		if(children && children.length > 0){
+				res += '<ul style="padding-left:20px;" id="treeid_' + tree.id + '" class="nav collapse ';
+			if(opt.open) 
+				res += 'in';
+				res += '">';
+			for(var i=0; i<children.length; i++){
+				res += bootstrapQ.tree.sub(children[i], opt);
+			}
+				res += '</ul>';
+		}
+		res += '</li>';
+	}
+	
+	return res;
+};
+bootstrapQ.tree.init = function(){
+	qiao.on('#treeul .glyphicon-minus', 'click', function(){
+		if($(this).parent().next().length > 0){
+			$('#treeid_' + $(this).parents('a').qdata().id).collapse('hide');
+			$(this).removeClass('glyphicon-minus').addClass('glyphicon-plus');
+		}
+	});
+	qiao.on('#treeul .glyphicon-plus', 'click', function(){
+		if($(this).parent().next().length > 0){
+			$('#treeid_' + $(this).parents('a').qdata().id).collapse('show');
+			$(this).removeClass('glyphicon-plus').addClass('glyphicon-minus');
+		}
+	});
+	qiao.on('input.treecheckbox', 'change', function(){
+		// \u68c0\u6d4b\u5b50\u7ea7\u7684
+		var subFlag = $(this).prop('checked');
+		$(this).parent().next().find('input.treecheckbox').each(function(){
+			$(this).prop('checked', subFlag);
+		});
+		
+		// \u68c0\u6d4b\u7236\u8f88\u7684
+		var parentFlag = true;
+		var $ul = $(this).parent().parent().parent(); 
+		$ul.children().each(function(){
+			var checked = $(this).children().children('input').prop('checked');
+			if(!checked) parentFlag = false;
+		});
+		$ul.prev().children('input').prop('checked', parentFlag);
+	});
+	
+	bootstrapQ.tree.url = $('#treeul').qdata().url;
+	if(bootstrapQ.tree.url){
+		qiao.on('.bstreeadd', 'click', bootstrapQ.tree.addp);
+		qiao.on('.bstreedel', 'click', bootstrapQ.tree.del);
+		qiao.on('.bstreeedit', 'click', bootstrapQ.tree.editp);
+	}
+};
+bootstrapQ.tree.addp = function(){
+	bootstrapQ.dialog({
+		url 	: bootstrapQ.tree.url + '/add/' + $(this).parent().qdata().id,
+		title 	: '\u6dfb\u52a0\u5b50\u83dc\u5355',
+		okbtn 	: '\u4fdd\u5b58'
+//	}, bootstrapQ.tree.add);
+	}, function(){});
+};
+//bootstrapQ.tree.add = function(){
+//	var res = qiao.ajax({url:bootstrapQ.tree.url + '/save',data:$('#bsmodal').find('form').qser()});
+//	bootstrapQ.msg(res);
+//
+//	if(res && res.type == 'success'){
+//		qiao.crud.url = bootstrapQ.tree.url;
+//		qiao.crud.reset();
+//		return true;
+//	}else{
+//		return false;
+//	}
+//};
+bootstrapQ.tree.del = function(){
+	var res = qiao.ajax({url:bootstrapQ.tree.url + '/del/' + $(this).parent().qdata().id});
+	bootstrapQ.msg(res);
+	
+//	if(res && res.type == 'success'){
+//		qiao.crud.url = bootstrapQ.tree.url;
+//		qiao.crud.reset();
+//	}
+};
+bootstrapQ.tree.editp = function(){
+	bootstrapQ.dialog({
+		url 	: bootstrapQ.tree.url + '/savep?id=' + $(this).parent().qdata().id,
+		title 	: '\u4fee\u6539\u83dc\u5355',
+		okbtn 	: '\u4fdd\u5b58'
+//	}, bootstrapQ.tree.edit);
+	}, function(){});
+};
+//bootstrapQ.tree.edit = function(){
+//	qiao.crud.url = bootstrapQ.tree.url;
+//	return qiao.crud.save();
+//};
 bootstrapQ.bstrooptions = {
 	width 	: '500px',
 	html 	: 'true',
