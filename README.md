@@ -13,7 +13,7 @@
 ---
 1. 官网：[http://uikoo9.com/bootstrapQ](http://uikoo9.com/bootstrapQ)
 2. 开始：[http://uikoo9.com/bootstrapQ/started](http://uikoo9.com/bootstrapQ/started)
-3. 文档：[http://uikoo9.com/bootstrapQ/docs/alert](http://uikoo9.com/bootstrapQ/docs/alert)
+3. 文档：[http://uikoo9.com/bootstrapQ/docs](http://uikoo9.com/bootstrapQ/docs)
 
 介绍
 ---
