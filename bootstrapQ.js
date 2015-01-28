@@ -1,20 +1,3 @@
-/**
- * jquery\u7684\u4e00\u4e9b\u5e38\u7528\u65b9\u6cd5
- * 1.qser
- * 2.qdata
- */
-$.fn.qser = function(){
-	var obj = {};
-	
-	var objs = $(this).serializeArray();
-	if(objs.length != 0){
-		for(var i=0; i<objs.length; i++){
-			obj[objs[i].name] = objs[i].value;
-		}
-	}
-
-	return obj;
-};
 $.fn.qdata = function(){
 	var res = {};
 	
