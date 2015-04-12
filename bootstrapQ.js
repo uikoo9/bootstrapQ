@@ -480,3 +480,19 @@ bootstrapQ.bstro = function(bss, options){
 		bootstro.start('.bootstro', opt);
 	}
 };
+bootstrapQ.bsdateoptions = {
+	autoclose: true,
+	language : 'zh-CN',
+	format: 'yyyy-mm-dd'
+};
+bootstrapQ.bsdate = function(selector, options){
+	if(selector){
+		var $element = $(selector);
+		if($element.length > 0){
+			var opt = $.extend({}, bootstrapQ.bsdateoptions, options);
+			$element.each(function(){
+				$(this).datepicker(opt);
+			});
+		}
+	}
+};

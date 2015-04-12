@@ -3,7 +3,6 @@
 1. bootstrap组件封装
 2. bootstrap组件增强
 3. bootstrap周边组件
-4. 压缩后仅8.3k
 
 依赖
 ---
@@ -30,6 +29,9 @@
 1. bstro
 	1. 网站引导插件
 	2. 官网：[http://clu3.github.io/bootstro.js/](http://clu3.github.io/bootstro.js/)
+2. bsdate
+	1. 日期插件
+	2. 官网：[https://github.com/eternicode/bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
 
 
 
