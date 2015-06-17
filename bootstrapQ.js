@@ -70,6 +70,8 @@ bootstrapQ.modaloptions = {
 	fade	: 'fade',
 	close	: true,
 	title	: 'title',
+	head	: true,
+	foot	: true,
 	btn		: false,
 	okbtn	: '\u786e\u5b9a',
 	qubtn	: '\u53d6\u6d88',
@@ -79,28 +81,37 @@ bootstrapQ.modaloptions = {
 	remote	: false,
 	backdrop: 'static',
 	keyboard: true,
-	style	: ''
+	style	: '',
+	mstyle	: ''
 };
 bootstrapQ.modalstr = function(opt){
 	var start = '<div class="modal '+opt.fade+'" id="bsmodal" tabindex="-1" role="dialog" aria-labelledby="bsmodaltitle" aria-hidden="true" style="position:fixed;top:20px;'+opt.style+'">';
 	if(opt.big){
-		start += '<div class="modal-dialog modal-lg"><div class="modal-content">';
+		start += '<div class="modal-dialog modal-lg" style="'+opt.mstyle+'"><div class="modal-content">';
 	}else{
-		start += '<div class="modal-dialog"><div class="modal-content">';
+		start += '<div class="modal-dialog" style="'+opt.mstyle+'"><div class="modal-content">';
 	}
 	var end = '</div></div></div>';
 	
-	var head = '<div class="modal-header">';
-	if(opt.close){
-		head += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+	var head = '';
+	if(opt.head){
+		head += '<div class="modal-header">';
+		if(opt.close){
+			head += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+		}
+		head += '<h3 class="modal-title" id="bsmodaltitle">'+opt.title+'</h3></div>';
 	}
-	head += '<h3 class="modal-title" id="bsmodaltitle">'+opt.title+'</h3></div>';
+	
 	var body = '<div class="modal-body"><p><h4>'+opt.msg+'</h4></p></div>';
-	var foot = '<div class="modal-footer"><button type="button" class="btn btn-primary bsok">'+opt.okbtn+'</button>';
-	if(opt.btn){
-		foot += '<button type="button" class="btn btn-default bscancel">'+opt.qubtn+'</button>';
+	
+	var foot = '';
+	if(opt.foot){
+		foot += '<div class="modal-footer"><button type="button" class="btn btn-primary bsok">'+opt.okbtn+'</button>';
+		if(opt.btn){
+			foot += '<button type="button" class="btn btn-default bscancel">'+opt.qubtn+'</button>';
+		}
+		foot += '</div>';
 	}
-	foot += '</div>';
 	
 	return start + head + body + foot + end;
 };
