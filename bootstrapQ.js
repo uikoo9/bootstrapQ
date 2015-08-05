@@ -217,10 +217,11 @@ bootstrapQ.dialog = function(options, func){
 bootstrapQ.msgoptions = {
 	msg  : 'msg',
 	type : 'info',
-	time : 2000
+	time : 2000,
+	position : 'top'
 };
-bootstrapQ.msgstr = function(msg, type){
-	return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;position:fixed;top:0;left:0;width:100%;z-index:2001;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
+bootstrapQ.msgstr = function(msg, type, position){
+	return '<div class="alert alert-'+type+' alert-dismissible" role="alert" style="display:none;position:fixed;' + position + ':0;left:0;width:100%;z-index:2001;margin:0;text-align:center;" id="bsalert"><button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>'+msg+'</div>';
 };
 bootstrapQ.msg = function(options){
 	var opt = $.extend({},bootstrapQ.msgoptions);
@@ -231,7 +232,7 @@ bootstrapQ.msg = function(options){
 		$.extend(opt, options);
 	}
 	
-	$('body').prepend(bootstrapQ.msgstr(opt.msg,opt.type));
+	$('body').prepend(bootstrapQ.msgstr(opt.msg, opt.type , opt.position));
 	$('#bsalert').slideDown();
 	setTimeout(function(){
 		$('#bsalert').slideUp(function(){
