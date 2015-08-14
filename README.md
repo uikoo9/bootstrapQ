@@ -33,6 +33,20 @@
 	1. 日期插件
 	2. 官网：[https://github.com/eternicode/bootstrap-datepicker](https://github.com/eternicode/bootstrap-datepicker)
 
+###捐助###
+---
+希望得到您的捐助：
+
+（支付宝捐助）
+
+![zhifubao](http://uikoo9.qiniudn.com/@/img/donate/zhifu2.png)
+
+（微信捐助）
+
+![weixin](http://uikoo9.qiniudn.com/@/img/donate/zhifu1.png)
+
+
+
 
 
 
